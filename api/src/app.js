@@ -10,15 +10,25 @@ const server = express();
 
 server.name = 'API';
 
+//headers
+//this line is to gain the ability to parser the .json files correctly
 server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 server.use(bodyParser.json({ limit: '50mb' }));
+
 server.use(cookieParser());
+//print in the console every time exists a request
 server.use(morgan('dev'));
+//Middleware to set the headers
 server.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); // update to match the domain you will make the request from
+  // update to match the domain you will make the request from
+  //!this will have to change in deployment to match the frontend domain
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); 
   res.header('Access-Control-Allow-Credentials', 'true');
+  //configure the type of headers the backend is going to accept
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  //the diferents methods for the request
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+  //the execution has to continue
   next();
 });
 
