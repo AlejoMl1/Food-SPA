@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
     score: {
       type: DataTypes.INTEGER,
     },
-    healthyness: {
+    healthy_score: {
       type: DataTypes.INTEGER,
     },
     image: {
