@@ -6,9 +6,11 @@ import { Link } from 'react-router-dom';
 import { types } from '../actions/types';
 import Card from './Card';
 import { getRecipes } from '../actions/index';
+import Page from './Page';
 
 export default function Home() {
     //constant to dispatch the actions
+    const dispatch = useDispatch()
     //Allows you to extract data from the Redux store state, using a selector function.
     //The selector will be run whenever the function component renders
     //useSelector() will also subscribe to the Redux store, and run your selector 
@@ -17,8 +19,18 @@ export default function Home() {
     // selector result value and the current result value. If they are different, the component 
     // will be forced to re-render. 
     // If they are the same, the component will not re-render.
-    const dispatch = useDispatch()
     const allRecipes = useSelector(state => state.recipes)
+    //Local states
+    const [currentPage, setCurrentPage] = useState(1);//starts in 1 because is the first page i want to show
+    const recipesPerPage = 9;
+    const indexOfLastRecipe = currentPage * recipesPerPage; //9
+    const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;//0
+    const currentRecipes = allRecipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
+
+    const page = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
     //  By using this Hook, you tell React that your component needs to do something after render. React will remember the function you passed (we’ll refer to it as our “effect”), and call it later after performing the DOM updates. 
     useEffect(() => {
         dispatch(getRecipes())
@@ -37,9 +49,9 @@ export default function Home() {
     }
 
     return (
-        <div>
+        <div className="container">
 
-            <div>
+            <div container_ownRecipe>
                 <Link to="/recipe" > Create your own recipe </Link>
                 <h1> Go go go go go go </h1>
                 <button onClick={event => handleClick(event)}  >
@@ -56,9 +68,14 @@ export default function Home() {
                     <option value="Carnivorean"> Carnivorean</option>
                 </select>
 
+                <Page
+                    recipesPerPage={recipesPerPage}
+                    allRecipes={allRecipes.length}
+                    page={page}
+                />
                 <div className='cards_container'>
                     {
-                        allRecipes?.map(el => {
+                        currentRecipes?.map(el => {
                             return (
                                 // <fragment className="cards_fragment">
                                 <Link to={'/home' + el.id}>

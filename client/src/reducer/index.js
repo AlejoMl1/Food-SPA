@@ -12,6 +12,11 @@ function reducer(state=initialState, action){
                  ...state,
                  recipes: action.payload
              }
+        case types.LOAD_DATA :
+        return{
+            ...state
+          
+        }
     default:
         return state;
     }
