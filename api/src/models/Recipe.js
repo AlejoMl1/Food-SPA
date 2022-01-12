@@ -31,7 +31,7 @@ module.exports = (sequelize) => {
     steps: {
       type: DataTypes.TEXT
     },   
-    createInDb:{
+    createManually:{
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: true,

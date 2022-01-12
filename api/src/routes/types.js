@@ -12,27 +12,40 @@ const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-router.get('/', async function(req, res, next){
-//     let url= 'https://api.spoonacular.com/recipes/complexSearch?'
-//     let maxNumber = 100;
-//     let link= url +'apiKey='+API_KEY2+'&number='+maxNumber+'&addRecipeInformation=true';
-//     const typesDietsApi = await axios.get(link);
-//     //this will return an array of arrays
-//     const arrayDiets = typesDietsApi.data.results.map(item => item.diets)
-//     //every item of every array has to be checked, if the diet is new please created it in 
-//     //the database otherwise keep looking 
-//     arrayDiets.map(item => {
-//         item.forEach(dietName => {
-//             Diet.findOrCreate({
-//                 where: {name:dietName}
-//             })
+const createDietsDb = async(link)=>{
+  const typesDietsApi = await axios.get(link);
+  //this will return an array of arrays
+  const arrayDiets = typesDietsApi.data.results.map(item => item.diets)
+  //add the vegetarian Diet
+  let vegetarian = ['vegetarian']
+  arrayDiets.push(vegetarian);
+  //every item of every array has to be checked, if the diet is new please created it in 
+  //the database otherwise keep looking 
+  // console.log(arrayDiets);
+  arrayDiets.map(item => {
+    for (const dietName of item) {
+        Diet.findOrCreate({
+        where: {name:dietName}
+      })
+    }
+  })
+}
 
-//         }
-//     )
-    
-// })
+router.get('/', async function(req, res, next){
+
     const allDiets = await Diet.findAll();
-    res.send(allDiets);
+    //if there is no diet in the db 
+    if (!allDiets.length){
+      console.log('no hubieron dietas');
+      let url= 'https://api.spoonacular.com/recipes/complexSearch?'
+      let maxNumber = 100;
+      let link= url +'apiKey='+API_KEY+'&number='+maxNumber+'&addRecipeInformation=true';
+      await createDietsDb(link)
+      const allDiets = await Diet.findAll();
+      res.send(allDiets);
+    }else{
+      res.send(allDiets);
+    }
 })
 
 module.exports = router;

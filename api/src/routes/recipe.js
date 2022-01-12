@@ -21,7 +21,7 @@ router.post('/', async function(req, res, next){
       image,
       healthy_score, 
       steps,
-      createInDb:true
+      createManually:true
     });
 
     let dietsDB = await Diet.findAll({
