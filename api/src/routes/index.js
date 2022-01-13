@@ -2,7 +2,7 @@ const { Router } = require('express');
 const recipes = require('./recipes.js');
 const recipe = require('./recipe.js');
 const types = require('./types.js');
-const filterOrder = require('./filterOrder')
+const filterOrder = require('./filterOrder.js');
 const axios = require('axios');
 const {Recipe,Diet} = require('../db')
 require('dotenv').config();
@@ -19,7 +19,7 @@ const {
 router.use('/recipes', recipes);
 router.use('/types', types);
 router.use('/recipe', recipe);
-router.use('/DESC', filterOrder);
+router.use('/filter', filterOrder);
 
 
 const getDbInfo = async()=>{

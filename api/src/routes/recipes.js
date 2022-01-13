@@ -69,15 +69,14 @@ const getApiInfo= async()=>{
 }
 
 const getDbInfo = async()=>{
-    return await Recipe.findAll(
-        {
+    return await Recipe.findAll({
         include:{
             model : Diet,
             attributes:['name']
         },
         through: {attributes: []}
     })
-    }
+}
 
 const getAllRecipes = async()=>{
     let apiInfo = await getApiInfo();
@@ -181,8 +180,7 @@ router.get('/',async (req,res,next) =>{
         let maxNumber = 100;
         let link= url +'apiKey='+API_KEY+'&number='+maxNumber+'&addRecipeInformation=true';
         await createDietsDb(link)
-        await createRecipeDb(link)
-        
+        await createRecipeDb(link)   
     }
 
     if (name ) {

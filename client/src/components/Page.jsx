@@ -3,7 +3,8 @@ import './Page.css'
 
 
 function Page({ recipesPerPage, allRecipes, page }) {
-    console.log(allRecipes);
+    // console.log(allRecipes);
+
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(allRecipes / recipesPerPage); i++) {
         pageNumbers.push(i)

@@ -2,10 +2,8 @@ import React from 'react';
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-
-import { types } from '../actions/types';
 import Card from './Card';
-import { getRecipes } from '../actions/index';
+import { getRecipes, filterRecipesByDiets, filterByOrder } from '../actions/index';
 import Page from './Page';
 
 export default function Home() {
@@ -19,13 +17,13 @@ export default function Home() {
     // selector result value and the current result value. If they are different, the component 
     // will be forced to re-render. 
     // If they are the same, the component will not re-render.
-    const allRecipes = useSelector(state => state.recipes)
+    const recipesToRender = useSelector(state => state.recipes)
     //Local states
     const [currentPage, setCurrentPage] = useState(1);//starts in 1 because is the first page i want to show
     const recipesPerPage = 9;
     const indexOfLastRecipe = currentPage * recipesPerPage; //9
     const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;//0
-    const currentRecipes = allRecipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
+    const currentRecipes = recipesToRender.slice(indexOfFirstRecipe, indexOfLastRecipe);
 
     const page = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -48,6 +46,18 @@ export default function Home() {
         dispatch(getRecipes())
     }
 
+    function handleFilterStatus(event) {
+        event.preventDefault();
+        // (event.target.value === 'All') ? dispatch(getRecipes()) :
+        dispatch(filterRecipesByDiets(event.target.value))
+    }
+    //function to re organized the cards A-Z or Z-A
+    function handleFilterByOrder(event) {
+        // event.preventDefault();
+        // (event.target.value === 'All') ? dispatch(getRecipes()) :
+        dispatch(filterByOrder(event.target.value))
+    }
+
     return (
         <div className="container">
 
@@ -59,18 +69,27 @@ export default function Home() {
                 </button>
             </div>
             <div>
-                <select >
-                    <option value="Upward">Upward  </option>
-                    <option value="Downward">Downward  </option>
+                <select className='select_order' onClick={event => handleFilterByOrder(event)}>
+                    <option value="ASC">A-Z </option>
+                    <option value="DESC">Z-A</option>
                 </select>
-                <select >
-                    <option value="vegetarian"> vegetarian</option>
-                    <option value="Carnivorean"> Carnivorean</option>
+                <select className="diets_select" onChange={event => handleFilterStatus(event)}>
+                    <option value="All">All</option>
+                    <option value="gluten free">Gluten free</option>
+                    <option value="dairy free">Dairy free</option>
+                    <option value="lacto ovo vegetarian">Lacto ovo vegetarian</option>
+                    <option value="vegan">Vegan</option>
+                    <option value="paleolithic">Paleolithic</option>
+                    <option value="primal">Primal</option>
+                    <option value="pescatarian">Pescatarian</option>
+                    <option value="fodmap friendly">Fodmap friendly</option>
+                    <option value="whole 30">Whole 30</option>
+                    <option value="vegetarian">Vegetarian</option>
                 </select>
 
                 <Page
                     recipesPerPage={recipesPerPage}
-                    allRecipes={allRecipes.length}
+                    allRecipes={recipesToRender.length}
                     page={page}
                 />
                 <div className='cards_container'>
