@@ -8,7 +8,7 @@ const router = Router();
 router.get('/', async function(req, res, next){
     try{
         let { order } = req.query;
-        console.log('entreeee',order);
+        // console.log('entreeee',order);
         order = order.toUpperCase()
 
         if(order === 'DESC'||order === 'ASC') {

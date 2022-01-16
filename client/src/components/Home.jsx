@@ -3,8 +3,10 @@ import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Card from './Card';
-import { getRecipes, filterRecipesByDiets, filterByOrder } from '../actions/index';
+import { getRecipes, filterRecipesByDiets, filterByOrder, filterRecipesBySource, filterByASC_DESC } from '../actions/index';
 import Page from './Page';
+import SearchBar from './SearchBar';
+
 
 export default function Home() {
     //constant to dispatch the actions
@@ -18,8 +20,10 @@ export default function Home() {
     // will be forced to re-render. 
     // If they are the same, the component will not re-render.
     const recipesToRender = useSelector(state => state.recipes)
+    console.log('Home was render');
     //Local states
     const [currentPage, setCurrentPage] = useState(1);//starts in 1 because is the first page i want to show
+    const [orderF, setOrderF] = useState('');//starts in 1 because is the first page i want to show
     const recipesPerPage = 9;
     const indexOfLastRecipe = currentPage * recipesPerPage; //9
     const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;//0
@@ -28,7 +32,6 @@ export default function Home() {
     const page = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
-
     //  By using this Hook, you tell React that your component needs to do something after render. React will remember the function you passed (we’ll refer to it as our “effect”), and call it later after performing the DOM updates. 
     useEffect(() => {
         dispatch(getRecipes())
@@ -53,27 +56,61 @@ export default function Home() {
     }
     //function to re organized the cards A-Z or Z-A
     function handleFilterByOrder(event) {
+        var e = document.getElementsByClassName("select_diets")[0];
+        var select_diets = e.value;
+
+        var e = document.getElementsByClassName("select_origin")[0];
+        var select_origin = e.value;
+        console.log('select_diets', select_diets);
+        console.log('select_origin', select_origin);
+        //filterbyorder obtein the sort array from the db
+        if (select_diets === 'All' && select_origin === 'All') {
+            dispatch(filterByOrder(event.target.value))
+            //else do the logic in the frontend
+        } else {
+            //filterbyASC_desc do the sort in the frontend
+            dispatch(filterByASC_DESC(event.target.value))
+            setCurrentPage(1)
+            setOrderF(event.target.value)
+
+        }
+    }
+
+    function handleFilterBySource(event) {
         // event.preventDefault();
         // (event.target.value === 'All') ? dispatch(getRecipes()) :
-        dispatch(filterByOrder(event.target.value))
+        dispatch(filterRecipesBySource(event.target.value))
     }
+
 
     return (
         <div className="container">
-
-            <div container_ownRecipe>
+            <div className='container_ownRecipe'>
                 <Link to="/recipe" > Create your own recipe </Link>
                 <h1> Go go go go go go </h1>
                 <button onClick={event => handleClick(event)}  >
                     Load all the recipes again
                 </button>
             </div>
+
+            <div className='container_searchBar'>
+                <SearchBar />
+            </div>
+
+
             <div>
                 <select className='select_order' onClick={event => handleFilterByOrder(event)}>
                     <option value="ASC">A-Z </option>
                     <option value="DESC">Z-A</option>
                 </select>
-                <select className="diets_select" onChange={event => handleFilterStatus(event)}>
+
+                <select className='select_origin' onClick={event => handleFilterBySource(event)} >
+                    <option value="All">All(Api/Created)</option>
+                    <option value="api">API</option>
+                    <option value="created">Created by user</option>
+                </select>
+
+                <select className="select_diets" onClick={event => handleFilterStatus(event)}>
                     <option value="All">All</option>
                     <option value="gluten free">Gluten free</option>
                     <option value="dairy free">Dairy free</option>
@@ -109,10 +146,7 @@ export default function Home() {
 
                                         key={el.id} />
                                 </Link>
-                                // </fragment>
-                                // diet={el.diets.map(diet => {
-                                //     return diet.name
-                                // })} 
+
                             );
                         })
                     }
