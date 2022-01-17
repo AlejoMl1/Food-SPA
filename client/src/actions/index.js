@@ -40,6 +40,18 @@ export function filterRecipesBySource(payload){
             payload
         }
 }
+//payload is the id
+export function getDetail(payload){
+    return async function(dispatch){
+        var json = await axios.get(`http://localhost:3001/recipes/${payload}`,{});
+
+        console.log('json in getdetail=',json.data);
+        return dispatch(  {
+                type: types.GET_DETAIL,
+                payload: json.data
+            })
+    }
+}
 
 
 export function getRecipes(){

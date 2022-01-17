@@ -7,6 +7,7 @@ const FILTER_ASC_DESC = 'FILTER_ASC_DESC';
 const SEARCH_TITLE = 'SEARCH_TITLE';
 const GET_TYPES = 'GET_TYPES';
 const POST_RECIPE = 'POST_RECIPE';
+const GET_DETAIL = 'GET_DETAIL'
 
 export const types ={
     GET_RECIPES,
@@ -17,6 +18,7 @@ export const types ={
     FILTER_ASC_DESC,
     SEARCH_TITLE,
     GET_TYPES,
-    POST_RECIPE
+    POST_RECIPE,
+    GET_DETAIL
 }
 

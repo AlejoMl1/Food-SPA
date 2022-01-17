@@ -134,7 +134,7 @@ export default function Home() {
                         currentRecipes?.map(el => {
                             return (
                                 // <fragment className="cards_fragment">
-                                <Link to={'/home' + el.id}>
+                                <Link to={'/detail/' + el.id}>
                                     <Card
                                         className='card_image'
                                         title={el.title}

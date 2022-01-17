@@ -3,24 +3,14 @@ import {types} from '../actions/types';
 const initialState = {
     recipes : [],
     allRecipes:[],
-    types:[]
+    types:[],
+    detail:[]
 }
 
 
 function reducer(state=initialState, action){
     switch(action.type){
-        case types.GET_RECIPES :
-             return{
-                 ...state,
-                 recipes: action.payload,
-                 allRecipes: action.payload
-             }
-        case types.FILTER_RECIPES_BY_ORDER:
-        // console.log('llegue a reducer filter by order');
-            return {
-                ...state,
-                recipes : action.payload
-            }
+
         case types.FILTER_ASC_DESC:
                 let sortedRecipes = action.payload === 'ASC'?
                 state.recipes.sort((next, prev) => {
@@ -47,11 +37,11 @@ function reducer(state=initialState, action){
                     ...state,
                     recipes : sortedRecipes
                 }
-
-
-        case types.LOAD_DATA :
-            return{
-                ...state
+        case types.FILTER_RECIPES_BY_ORDER:
+        // console.log('llegue a reducer filter by order');
+            return {
+                ...state,
+                recipes : action.payload
             }
         case types.FILTER_RECIPES_BY_DIETS:
             var actualRecipes = state.recipes.slice(0)
@@ -60,7 +50,7 @@ function reducer(state=initialState, action){
 
             let filteredDiets=[]
             if( action.payload === "All") {
-                 filteredDiets= state.allRecipes.slice(0)
+                    filteredDiets= state.allRecipes.slice(0)
             }else{
                 //filter the elements that contains the diets
                 for (const el of actualRecipes) {
@@ -91,10 +81,26 @@ function reducer(state=initialState, action){
                 ...state,
                 recipes : filteredDietss
             }
+        
+        case types.GET_RECIPES :
+            return{
+                ...state,
+                recipes: action.payload,
+                allRecipes: action.payload
+            }
         case types.GET_TYPES:
             return {
                 ...state,
                 types : action.payload
+            }
+        case types.GET_DETAIL:
+            return {
+                ...state,
+                detail : action.payload
+            }
+        case types.LOAD_DATA :
+            return{
+                ...state
             }
         case types.POST_RECIPE:
             return {
