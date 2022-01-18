@@ -89,45 +89,48 @@ export default function Home() {
         <div className="container">
 
             <header className="header">
-                <nav className="header_nav">
-                    <div className='nav_logo'>
-                        <img src={logo}
-                            alt="Logo of the page"
+                {/* <nav className="header_nav"> */}
+                <div className='nav_logo'>
+                    <img src={logo}
+                        alt="Logo of the page"
 
-                        />
-                    </div>
-                    <div className='nav_space1'>
-
-                    </div>
-                    <div className='nav_searchBar'>
-                        <SearchBar />
-                    </div>
-                </nav>
-
-
+                    />
+                </div>
+                <div className='nav_searchBar'>
+                    <SearchBar />
+                </div>
+                <div className='nav_newRecipe'>
+                    <Link to="/recipe" >
+                        <button className='nav_newRecipe_button'>Create Recipe</button>
+                    </Link>
+                </div>
+                {/* </nav> */}
             </header>
 
-            <div className='container_ownRecipe'>
+            {/* <div className='container_ownRecipe'>
                 <Link to="/recipe" > Create your recipe </Link>
                 <h1> Wiki Recipe </h1>
                 <button onClick={event => handleClick(event)}  >
                     Load all the recipes again
                 </button>
-            </div>
-
-
+            </div> */}
             <div className='container_filters'>
-                <select className='select_order' onClick={event => handleFilterByOrder(event)}>
-                    <option value="ASC">A-Z </option>
-                    <option value="DESC">Z-A</option>
-                </select>
+                <h6 className='container_filters_h1'>Filter By Order:</h6>
+                <div className='container_filters_order'>
+                    <select className='select_order' onClick={event => handleFilterByOrder(event)}>
+                        <option value="ASC">A-Z </option>
+                        <option value="DESC">Z-A</option>
+                    </select>
+                </div>
 
+                <h6 className='container_filters_h2' >By Source:</h6>
                 <select className='select_origin' onClick={event => handleFilterBySource(event)} >
                     <option value="All">All(Api/Created)</option>
                     <option value="api">API</option>
                     <option value="created">Created by user</option>
                 </select>
 
+                <h6 className='container_filters_h3' >By Diet:</h6>
                 <select className="select_diets" onClick={event => handleFilterStatus(event)}>
                     <option value="All">All</option>
                     <option value="gluten free">Gluten free</option>
@@ -141,6 +144,13 @@ export default function Home() {
                     <option value="whole 30">Whole 30</option>
                     <option value="vegetarian">Vegetarian</option>
                 </select>
+            </div>
+            <div className='container_page'>
+                <Page
+                    recipesPerPage={recipesPerPage}
+                    allRecipes={recipesToRender.length}
+                    page={page}
+                />
             </div>
 
             <div className='container_cards'>
@@ -166,13 +176,7 @@ export default function Home() {
                 }
             </div>
 
-            <div className='container_page'>
-                <Page
-                    recipesPerPage={recipesPerPage}
-                    allRecipes={recipesToRender.length}
-                    page={page}
-                />
-            </div>
+
 
         </div>
     )

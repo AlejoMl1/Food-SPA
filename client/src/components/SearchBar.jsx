@@ -4,6 +4,7 @@ import { useEffect, useDispatch } from 'react-redux'
 import { searchTitle } from '../actions/index'
 import './SearchBar.css'
 import searchLogo from '../img/search_logo.svg'
+import closeLogo from '../img/close_logo.svg'
 
 function SearchBar() {
 
@@ -38,8 +39,7 @@ function SearchBar() {
         <div className='main'>
             <button type="submit"
                 className="main_submit"
-                onClick={(event) => handleSubmit(event)}
-            >
+                onClick={(event) => handleSubmit(event)}>
                 <img src={searchLogo} alt="search logo figure" />
             </button>
             <div className='main_searchBar'>
@@ -49,7 +49,13 @@ function SearchBar() {
                     className="main_searchBar_input"
                 ></input>
             </div>
-
+            <div >
+                <button
+                    className='main_closeButton'
+                    type='reset'>
+                    <img src={closeLogo} alt="close logo figure" />
+                </button>
+            </div>
         </div>
     )
 }

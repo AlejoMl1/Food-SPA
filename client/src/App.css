@@ -1,6 +1,14 @@
-.App {
-  text-align: center;
+html,
+body {
+  width: 100vw;
+  margin-right: 4rem;
+  margin-left: 4rem;
+  overflow-x: hidden;
+  margin: 0 auto;
 }
+
+
+
 
 .App-logo {
   height: 40vmin;
@@ -20,11 +28,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border-color: blue 4px solid;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
+
+/* .App-link {
   color: #61dafb;
 }
 
@@ -32,7 +41,10 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
+*/
