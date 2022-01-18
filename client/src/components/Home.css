@@ -17,7 +17,7 @@ body {
     display: grid;
     width: 100%;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 8rem 5.5rem 7rem;
+    grid-template-rows: 8rem 5.5rem 8rem;
     grid-auto-flow: row;
     padding-right: 4rem;
     padding-left: 4rem;
@@ -89,15 +89,14 @@ body {
 .nav_newRecipe {
     width: 100%;
     grid-column-start: 9;
-    grid-column-end: 10;
-
+    grid-column-end: 11;
+    height: 100%;
     align-self: center;
     align-items: center;
     place-self: center;
     /* margin-left: 30rem; */
 
-    margin-bottom: 0.5rem;
-    margin-top: 0;
+    /* margin-bottom: 0.5rem; */
     padding-left: 1rem;
     padding-right: 1rem;
     padding-top: 1rem;
@@ -109,7 +108,7 @@ body {
     /* font-weight: 10px; */
     font-weight: 3rem;
     line-height: 1.6;
-    text-decoration: none;
+    text-decoration: none !important;
     height: 80%;
 
 }
@@ -200,7 +199,6 @@ body {
     display: inline-block;
     grid-column-start: 15;
     grid-column-end: 16;
-
     text-align: right;
 }
 
@@ -219,12 +217,11 @@ body {
 
 .container_page {
     display: grid;
-
     width: 100%;
-    grid-row-start: 3;
-    grid-row-end: 4;
     grid-column-start: 1;
     grid-column-end: 13;
+    font-size: 10rem;
+
 }
 
 
@@ -237,13 +234,17 @@ body {
 .container_cards {
     display: grid;
     width: 100%;
-    grid-row-start: 4;
-    grid-row-end: 5;
     grid-column-start: 1;
     grid-column-end: 13;
+    grid-template-columns: repeat(3, 40rem);
+    grid-template-rows: repeat(3, 30rem);
+    gap: 1rem;
+    align-content: center;
+    justify-content: center;
+    font-size: 5rem;
 
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 3rem;
-    font-size: 6rem;
+}
+
+.container_cards a {
+    text-decoration: none;
 }

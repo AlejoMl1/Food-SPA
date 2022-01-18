@@ -18,6 +18,10 @@
     border-radius: 2.4rem;
 }
 
+.main a {
+    text-decoration: none;
+}
+
 .main_submit {
     background-color: transparent;
     align-items: center;
