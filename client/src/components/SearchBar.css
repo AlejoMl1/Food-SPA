@@ -1,0 +1,53 @@
+.main {
+    align-items: center;
+    display: flex;
+    font-size: 5rem;
+    transition: all .1s ease-in-out;
+    box-sizing: border-box;
+    color: #111;
+    position: relative;
+    font-family: -apple-system, BlinkMacSystemFont, San Francisco, Helvetica Neue, Helvetica, Ubuntu, Roboto, Noto, Segoe UI, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    background-color: #eee;
+    /* border-color: solid 5px black; */
+    border: 1px solid #da4fc700;
+    border-radius: 2.4rem;
+}
+
+.main_submit {
+    background-color: transparent;
+    align-items: center;
+    display: flex;
+    border: none;
+    padding: 0;
+    text-align: inherit;
+    width: 3rem;
+    height: 3rem;
+
+}
+
+button.main_submit {
+    line-height: inherit;
+}
+
+.main_searchBar {
+    display: flex;
+    box-sizing: border-box;
+    flex-grow: 1;
+}
+
+.main_searchBar_input {
+    padding-bottom: 2px;
+    padding-left: 10px;
+    background-color: transparent;
+    border: none;
+    border-color: transparent;
+    color: #111;
+    flex-grow: 1;
+    width: 100%;
+    letter-spacing: 2px;
+    /* to remove the border focus */
+    outline-width: 0;
+    font-family: -apple-system, BlinkMacSystemFont, San Francisco, Helvetica Neue, Helvetica, Ubuntu, Roboto, Noto, Segoe UI, Arial, sans-serif;
+}

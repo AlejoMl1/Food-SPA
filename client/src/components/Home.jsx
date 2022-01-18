@@ -6,6 +6,8 @@ import Card from './Card';
 import { getRecipes, filterRecipesByDiets, filterByOrder, filterRecipesBySource, filterByASC_DESC } from '../actions/index';
 import Page from './Page';
 import SearchBar from './SearchBar';
+import './Home.css'
+import logo from '../img/logo.svg'
 
 
 export default function Home() {
@@ -85,20 +87,36 @@ export default function Home() {
 
     return (
         <div className="container">
+
+            <header className="header">
+                <nav className="header_nav">
+                    <div className='nav_logo'>
+                        <img src={logo}
+                            alt="Logo of the page"
+
+                        />
+                    </div>
+                    <div className='nav_space1'>
+
+                    </div>
+                    <div className='nav_searchBar'>
+                        <SearchBar />
+                    </div>
+                </nav>
+
+
+            </header>
+
             <div className='container_ownRecipe'>
-                <Link to="/recipe" > Create your own recipe </Link>
-                <h1> Go go go go go go </h1>
+                <Link to="/recipe" > Create your recipe </Link>
+                <h1> Wiki Recipe </h1>
                 <button onClick={event => handleClick(event)}  >
                     Load all the recipes again
                 </button>
             </div>
 
-            <div className='container_searchBar'>
-                <SearchBar />
-            </div>
 
-
-            <div>
+            <div className='container_filters'>
                 <select className='select_order' onClick={event => handleFilterByOrder(event)}>
                     <option value="ASC">A-Z </option>
                     <option value="DESC">Z-A</option>
@@ -123,35 +141,39 @@ export default function Home() {
                     <option value="whole 30">Whole 30</option>
                     <option value="vegetarian">Vegetarian</option>
                 </select>
+            </div>
 
+            <div className='container_cards'>
+                {
+                    currentRecipes?.map(el => {
+                        return (
+                            // <fragment className="cards_fragment">
+                            <Link to={'/detail/' + el.id}>
+                                <Card
+                                    className='card_image'
+                                    title={el.title}
+                                    image={el.image}
+                                    diet={el.diets.map(diet => {
+                                        return diet.name
+                                    }).join('| ')}
+
+
+                                    key={el.id} />
+                            </Link>
+
+                        );
+                    })
+                }
+            </div>
+
+            <div className='container_page'>
                 <Page
                     recipesPerPage={recipesPerPage}
                     allRecipes={recipesToRender.length}
                     page={page}
                 />
-                <div className='cards_container'>
-                    {
-                        currentRecipes?.map(el => {
-                            return (
-                                // <fragment className="cards_fragment">
-                                <Link to={'/detail/' + el.id}>
-                                    <Card
-                                        className='card_image'
-                                        title={el.title}
-                                        image={el.image}
-                                        diet={el.diets.map(diet => {
-                                            return diet.name
-                                        }).join('| ')}
-
-
-                                        key={el.id} />
-                                </Link>
-
-                            );
-                        })
-                    }
-                </div>
             </div>
+
         </div>
     )
 }

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDetail } from '../actions/index'
+import './Detail.css'
 
 
 export default function Detail() {
@@ -66,7 +67,7 @@ export default function Detail() {
                             <h3>Steps:</h3>
                             <ol>
                                 {
-                                    recipe[0].steps.split('|').map((step, index) => {
+                                    recipe[0].steps && recipe[0].steps.split('|').map((step, index) => {
                                         return (<li key={index}> {step}</li>)
                                     })
                                 }

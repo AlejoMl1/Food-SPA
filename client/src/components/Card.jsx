@@ -5,8 +5,8 @@ function Card({ title, image, diet }) {
     return (
         <div className="card">
             <h3>{title}</h3>
-            <h5>{diet}</h5>
             <img className="card_image" src={image} alt={` ${title} recipe`} />
+            <h5>{diet}</h5>
         </div>
     )
 }

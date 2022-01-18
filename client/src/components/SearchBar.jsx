@@ -2,6 +2,8 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect, useDispatch } from 'react-redux'
 import { searchTitle } from '../actions/index'
+import './SearchBar.css'
+import searchLogo from '../img/search_logo.svg'
 
 function SearchBar() {
 
@@ -33,17 +35,21 @@ function SearchBar() {
 
 
     return (
-        <div>
-            <input type="text"
-                placeholder="Search..."
-                onInput={(event) => handleInputChange(event)}
-                className="search_input"
-            ></input>
+        <div className='main'>
             <button type="submit"
-                className="search_button"
+                className="main_submit"
                 onClick={(event) => handleSubmit(event)}
-            >Search
+            >
+                <img src={searchLogo} alt="search logo figure" />
             </button>
+            <div className='main_searchBar'>
+                <input type="text"
+                    placeholder="Search..."
+                    onInput={(event) => handleInputChange(event)}
+                    className="main_searchBar_input"
+                ></input>
+            </div>
+
         </div>
     )
 }

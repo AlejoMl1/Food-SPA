@@ -1,7 +1,6 @@
 .navbar {
     display: flex;
     position: relative;
-
     width: 100%;
     box-sizing: border-box;
     margin: 0 auto;
@@ -12,7 +11,7 @@
 
 }
 
-li {
+.navbar_ul li {
     display: block;
     float: left;
     width: 35px;
@@ -21,12 +20,8 @@ li {
     margin-left: 15px;
     margin-right: 15px;
     font-weight: 500;
-
-
-
-
 }
 
-li:hover {
+.navbar_ul li:hover {
     background-color: #3a8676;
 }
