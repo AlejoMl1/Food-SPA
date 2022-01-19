@@ -41,18 +41,18 @@ export default function Detail() {
 
     return (
         <div>
-
             {
                 recipe.length > 0 && (
                     <div className='container_details'>
-                        <h1>{recipe[0].title}</h1>
-                        <div className='container_details_img'>
-                            <img src={recipe[0].image} alt={recipe[0].image} />
-                        </div>
-                        <div className='container_details_summary'>
-                            <h5>{recipe[0].summary.replace(/<[^>]*>?/g, "")}</h5>
-                        </div>
+                        <div className='container_left1'>
+                            <div className='container_h1'>
+                                <h1>{recipe[0].title}</h1>
+                            </div>
+                            <div className='container_details_img'>
 
+                                <img src={recipe[0].image} alt={recipe[0].image} />
+                            </div>
+                        </div>
                         <div className='container_details_summary_diets'>
                             <h3>Diets:</h3>
                             {
@@ -63,29 +63,57 @@ export default function Detail() {
                                 )
                             }
                         </div>
+                        <div className='container_details_summary'>
+                            <div className='container_details_summary_title' >
+                                <h2>Summary</h2>
+                            </div>
+                            <div className='container_details_summary_content' >
+                                <p>{recipe[0].summary.replace(/<[^>]*>?/g, "")}</p>
+                            </div>
+                        </div>
+
                         <div className='container_details_steps'>
-                            <h3>Steps:</h3>
-                            <ol>
-                                {
-                                    recipe[0].steps && recipe[0].steps.split('|').map((step, index) => {
-                                        return (<li key={index}> {step}</li>)
-                                    })
-                                }
-                            </ol>
+                            <div className='container_details_steps_title' >
+                                <h3>Steps:</h3>
+                            </div>
+                            <div className='container_details_steps_content' >
+                                <ol>
+                                    {
+                                        recipe[0].steps && recipe[0].steps.split('|').map((step, index) => {
+                                            return (<li key={index}> {step}</li>)
+                                        })
+                                    }
+                                </ol>
+                            </div>
 
 
                         </div>
 
 
+
+                        <div className='container_details_scoreh_title'>
+                            <h2>Score:</h2>
+                        </div>
+
+                        <div className='container_details_scoreh_value'>
+                            {
+                                recipe[0].healthy_score && ((<h3 > {recipe[0].healthy_score}</h3>))
+
+                            }
+
+                        </div>
+
+                        <Link to='/home'>
+                            <button>Back To Home</button>
+                        </Link>
                     </div>
 
-                )
-            }
-            <Link to='/home'>
-                <button>Back To Home</button>
-            </Link>
+                )}
         </div>
     )
 }
+
+
+
 
 

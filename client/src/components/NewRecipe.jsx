@@ -128,8 +128,8 @@ function NewRecipe() {
         <div className='main_container'>
 
             <div className='left_container' >
-                <form className="container_form " >
-                    <h1 className='h1_title'>Create your recipe</h1>
+                <h1 className='h1_title'>Create Your Recipe</h1>
+                <form className="container_form" >
                     <div className='elements'>
                         <label>Title:</label>
                         <input
@@ -227,9 +227,20 @@ function NewRecipe() {
                         }
                     </div>
                 </form>
+                <div className='container_buttons'>
+                    <Link to='/home'>
+                        <button className='container_buttons_back' >Go Back</button>
+                    </Link>
+                    <Link to='/home'>
+                        <button className='container_buttons_submit' onClick={handleSubmit}>Submit</button>
+                    </Link>
+
+                </div>
             </div>
             <div className='rigth_container' >
-                <label >Select Diet Types:</label>
+                <div className='rigth_container_h1' >
+                    <h1 >Select Diet Types:</h1>
+                </div>
                 <div className="checkbox_types" >
                     {
                         types.map(type => {
@@ -252,15 +263,7 @@ function NewRecipe() {
 
 
 
-            <div className='container_buttons'>
-                <Link to='/home'>
-                    <button>Go Back</button>
-                </Link>
-                <Link to='/home'>
-                    <button onClick={handleSubmit}>Submit</button>
-                </Link>
 
-            </div>
         </div>
     )
 }
