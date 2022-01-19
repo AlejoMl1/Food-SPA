@@ -3,7 +3,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTypes, postRecipe } from '../actions'
-
+import './NewRecipe.css'
 function NewRecipe() {
     const dispatch = useDispatch()
 
@@ -125,109 +125,111 @@ function NewRecipe() {
     }
 
     return (
-        <div>
+        <div className='main_container'>
 
-            <Link to='/home'>
-                <button>Back</button>
-            </Link>
-            <h1>Create your recipe</h1>
-            <form className="container_form " >
-                <div >
-                    <label>Title:</label>
-                    <input
-                        type="text"
-                        value={formData.title}
-                        name='title'
-                        onChange={handleChange}
-                        placeholder='Title of the recipe'
-                    >
-                    </input>
-                    {
-                        errors.title && (
-                            <p className='errors'>{errors.title}</p>
-                        )
-                    }
-                </div>
-                <div >
-                    <label>Summary:</label>
-                    <input
-                        type="text"
-                        value={formData.summary}
-                        name='summary'
-                        onChange={handleChange}
-                        placeholder='A brief summary of the recipe'
-                    >
-                    </input>
-                    {
-                        errors.summary && ((
-                            <p className='errors'>{errors.summary}</p>
-                        ))
-                    }
-                </div>
-                <div >
-                    <label>Score:</label>
-                    <input
-                        type="number"
-                        value={formData.score}
-                        name='score'
-                        onChange={handleChange}
-                        placeholder='0-100'
-                    >
-                    </input>
-                    {
-                        errors.score && ((
-                            <p className='errors'>{errors.score}</p>
-                        ))
-                    }
-                </div>
-                <div >
-                    <label>Healthy Score:</label>
-                    <input
-                        type="number"
-                        value={formData.healthy_score}
-                        name='healthy_score'
-                        onChange={handleChange}
-                        placeholder='0-100'
-                    >
-                    </input>
-                    {
-                        errors.healthy_score && ((
-                            <p className='errors'>{errors.healthy_score}</p>
-                        ))
-                    }
-                </div>
-                <div >
-                    <label>Image URL:</label>
-                    <input
-                        type="text"
-                        value={formData.image}
-                        name='image'
-                        onChange={handleChange}
-                        placeholder='url of the image'
-                    >
-                    </input>
-                    {
-                        errors.image && (((
-                            <p className='errors'>{errors.image}</p>
-                        )))
-                    }
-                </div>
-                <div >
-                    <label>Steps:</label>
-                    <input
-                        type="text"
-                        value={formData.steps}
-                        name='steps'
-                        onChange={handleChange}
-                        placeholder='write the steps'
-                    >
-                    </input>
-                    {
-                        errors.steps && ((
-                            <p className='errors'>{errors.steps}</p>
-                        ))
-                    }
-                </div>
+            <div className='left_container' >
+                <form className="container_form " >
+                    <h1 className='h1_title'>Create your recipe</h1>
+                    <div className='elements'>
+                        <label>Title:</label>
+                        <input
+                            type="text"
+                            value={formData.title}
+                            name='title'
+                            onChange={handleChange}
+                            placeholder='Title of the recipe'
+                        >
+                        </input>
+                        {
+                            errors.title && (
+                                <p className='errors'>{errors.title}</p>
+                            )
+                        }
+                    </div >
+                    <div className='elements' >
+                        <label>Summary:</label>
+                        <input
+                            type="text"
+                            value={formData.summary}
+                            name='summary'
+                            onChange={handleChange}
+                            placeholder='A brief summary of the recipe'
+                        >
+                        </input>
+                        {
+                            errors.summary && ((
+                                <p className='errors'>{errors.summary}</p>
+                            ))
+                        }
+                    </div>
+                    <div className='elements' >
+                        <label>Score:</label>
+                        <input
+                            type="number"
+                            value={formData.score}
+                            name='score'
+                            onChange={handleChange}
+                            placeholder='0-100'
+                        >
+                        </input>
+                        {
+                            errors.score && ((
+                                <p className='errors'>{errors.score}</p>
+                            ))
+                        }
+                    </div>
+                    <div className='elements'>
+                        <label>Healthy Score:</label>
+                        <input
+                            type="number"
+                            value={formData.healthy_score}
+                            name='healthy_score'
+                            onChange={handleChange}
+                            placeholder='0-100'
+                        >
+                        </input>
+                        {
+                            errors.healthy_score && ((
+                                <p className='errors'>{errors.healthy_score}</p>
+                            ))
+                        }
+                    </div>
+                    <div className='elements'>
+                        <label>Image URL:</label>
+                        <input
+                            type="text"
+                            value={formData.image}
+                            name='image'
+                            onChange={handleChange}
+                            placeholder='url of the image'
+                        >
+                        </input>
+                        {
+                            errors.image && (((
+                                <p className='errors'>{errors.image}</p>
+                            )))
+                        }
+                    </div>
+                    <div className='elements'>
+                        <label>Steps:</label>
+                        <input
+                            type="text"
+                            value={formData.steps}
+                            name='steps'
+                            onChange={handleChange}
+                            placeholder='write the steps'
+                        >
+                        </input>
+                        {
+                            errors.steps && ((
+                                <p className='errors'>{errors.steps}</p>
+                            ))
+                        }
+                    </div>
+                </form>
+            </div>
+            <div className='rigth_container' >
+                <label >Select Diet Types:</label>
                 <div className="checkbox_types" >
                     {
                         types.map(type => {
@@ -246,8 +248,14 @@ function NewRecipe() {
                     }
 
                 </div>
-            </form>
-            <div>
+            </div>
+
+
+
+            <div className='container_buttons'>
+                <Link to='/home'>
+                    <button>Go Back</button>
+                </Link>
                 <Link to='/home'>
                     <button onClick={handleSubmit}>Submit</button>
                 </Link>

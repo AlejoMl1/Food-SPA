@@ -17,10 +17,11 @@ body {
     display: grid;
     width: 100%;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 8rem 5.5rem 8rem;
+    grid-template-rows: 6rem 6rem 8rem;
     grid-auto-flow: row;
     padding-right: 4rem;
     padding-left: 4rem;
+    margin-top: 4rem;
     /* grid-template-rows: 1fr 1fr 1fr;
     justify-content: center; */
     font-size: 7rem;
@@ -47,7 +48,7 @@ body {
     grid-column-end: 13;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: 6rem;
+    grid-template-rows: 5rem;
     align-items: center;
     justify-self: center;
     /* justify-content: space-around; */
@@ -115,7 +116,7 @@ body {
 
 /* style={{ textDecoration: 'none' }} */
 
-.nav_newRecipe link {
+.nav_newRecipe a {
     list-style: none;
     text-decoration: none;
     color: #111;
@@ -145,8 +146,8 @@ body {
     grid-template-rows: 3rem;
     grid-auto-flow: row;
     background: #fff;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 1.3rem;
+    margin-bottom: 1.3rem;
     color: #111;
     font-family: -apple-system, BlinkMacSystemFont, San Francisco, Helvetica Neue, Helvetica, Ubuntu, Roboto, Noto, Segoe UI, Arial, sans-serif;
     font-size: 3rem;
@@ -218,6 +219,7 @@ body {
 .container_page {
     display: grid;
     width: 100%;
+    margin-top: 1rem;
     grid-column-start: 1;
     grid-column-end: 13;
     font-size: 10rem;

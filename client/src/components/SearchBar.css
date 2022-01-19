@@ -2,6 +2,7 @@
     align-items: center;
     display: grid;
     width: 100%;
+
     font-size: 5.5rem;
     grid-template-columns: 1fr 10fr 1fr;
     grid-template-rows: 6rem;
@@ -12,7 +13,7 @@
     font-family: -apple-system, BlinkMacSystemFont, San Francisco, Helvetica Neue, Helvetica, Ubuntu, Roboto, Noto, Segoe UI, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.6;
-    background-color: #eee;
+
     /* border-color: solid 5px black; */
     border: 10px solid #da4fc700;
     border-radius: 2.4rem;
@@ -51,6 +52,7 @@ button.main_submit {
 .main_searchBar_input {
     display: grid;
     width: 100%;
+    height: 3rem;
     align-content: start;
     justify-self: start;
     grid-column-start: 2;
@@ -61,13 +63,18 @@ button.main_submit {
     border: none;
     border-color: transparent;
     color: #111;
-
-
     letter-spacing: 4px;
+
+
     /* to remove the border focus */
     outline-width: 0.4;
     font-family: -apple-system, BlinkMacSystemFont, San Francisco, Helvetica Neue, Helvetica, Ubuntu, Roboto, Noto, Segoe UI, Arial, sans-serif;
 }
+
+.main_searchBar_input input:focus {
+    background-color: #eee;
+}
+
 
 .main_closeButton {
 
