@@ -1,12 +1,17 @@
-// const baseUrl = "https://lets-cook-spa.herokuapp.com";
-const baseUrl  = "http://localhost:3001";
+// const BASE_URL = "https://lets-cook-spa.herokuapp.com";
 
-export const URL_GET_ALL_RECIPES = `${baseUrl}/recipes`;
-export const URL_GET_RECIPES_HOME = `${baseUrl}/`;
-export const URL_GET_TYPES = `${baseUrl}/types`;
-export const URL_POST_RECIPE = `${baseUrl}/recipe`;
-export const URL_GET_RECIPE_QUERY = `${baseUrl}/recipes?name=`;
-export const URL_SEARCH_BY_RECIPE_ID = `${baseUrl}/recipes/`;
-export const URL_GET_RECIPE_BY_ORDER = `${baseUrl}/filter?order=`;
+
+import dotenv from 'dotenv';
+dotenv.config();
+const BASE_URL = process.env.REACT_APP_API || 'http://localhost:3001' ;
+
+console.log('BASE_URL', BASE_URL);
+export const URL_GET_ALL_RECIPES = `${BASE_URL}/recipes`;
+export const URL_GET_RECIPES_HOME = `${BASE_URL}/`;
+export const URL_GET_TYPES = `${BASE_URL}/types`;
+export const URL_POST_RECIPE = `${BASE_URL}/recipe`;
+export const URL_GET_RECIPE_QUERY = `${BASE_URL}/recipes?name=`;
+export const URL_SEARCH_BY_RECIPE_ID = `${BASE_URL}/recipes/`;
+export const URL_GET_RECIPE_BY_ORDER = `${BASE_URL}/filter?order=`;
 
 
