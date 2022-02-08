@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const routes = require('./routes/index.js');
 //*Esto es para el deployment en heroku 
 const {CORS_URL} = process.env;
+console.log('cors url ',CORS_URL);
 require('./db.js');
 
 const server = express();
