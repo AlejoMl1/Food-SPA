@@ -89,23 +89,45 @@ export default function Detail() {
 
                         </div>
 
+                        <div className='container_right2'>
+                            <div className='container_details_score'>
+
+                                <div className='container_details_score_title'>
+                                    <h2>Score:</h2>
+                                </div>
+
+                                <div className='container_details_score_value'>
+                                    {
+                                        recipe[0].score && ((<h3 > {recipe[0].score}</h3>))
+
+                                    }
+                                </div>
+                                <div className='container_details_scoreh_title'>
+                                    <h2>Health Score:</h2>
+                                </div>
+
+                                <div className='container_details_scoreh_value'>
+                                    {
+                                        recipe[0].healthy_score && ((<h3 > {recipe[0].healthy_score}</h3>))
+                                    }
+
+                                </div>
+                                <div className='divOfTheButton'>
+                                    <Link to='/home'>
+                                        <button className='button_go_back'>Back To Home</button>
+                                    </Link>
+
+                                </div>
+
+                            </div>
 
 
-                        <div className='container_details_scoreh_title'>
-                            <h2>Score:</h2>
+
+
                         </div>
 
-                        <div className='container_details_scoreh_value'>
-                            {
-                                recipe[0].healthy_score && ((<h3 > {recipe[0].healthy_score}</h3>))
 
-                            }
 
-                        </div>
-
-                        <Link to='/home'>
-                            <button>Back To Home</button>
-                        </Link>
                     </div>
 
                 )}

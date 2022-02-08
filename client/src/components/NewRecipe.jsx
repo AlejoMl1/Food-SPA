@@ -80,7 +80,8 @@ function NewRecipe() {
     }
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (Object.keys(errors).length !== 0) {
+        // console.log('form title', formData.title);
+        if (Object.keys(errors).length !== 0 || formData.title === '') {
             alert('Please fix the errors in the form')
         } else {
             //load a default image if the user doesnt type an url
@@ -116,10 +117,10 @@ function NewRecipe() {
             errors.summary = 'Summary is required'
         } else if (!input.score) {
             errors.score = 'Score is required'
-        } else if (input.score < 0 || input.score > 100) {
+        } else if (input.score < 0 || input.score > 100 || input.score === '') {
             errors.score = 'Score must be a positive number between 0-100'
-        } else if (input.healthy_score < 0 || input.healthy_score > 100) {
-            errors.score = 'Score must be a positive number between 0-100'
+        } else if (input.healthy_score < 0 || input.healthy_score > 100 || input.healthy_score === '') {
+            errors.healthy_score = 'Healthy Score must be a positive number between 0-100'
         }
         return errors
     }

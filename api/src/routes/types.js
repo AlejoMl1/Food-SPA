@@ -48,4 +48,19 @@ router.get('/', async function(req, res, next){
     }
 })
 
+router.post('/nueva', async function(req, res, next){
+
+  const dietss = req.body.name
+  console.log('acaaaa',dietss)
+  if(dietss){
+    let x = await Diet.create({
+      name:dietss
+    })
+    res.status('200').send('Nueva diet')
+  }else{
+    res.status('400').send('no se pudo crear la nueva dieta')
+  }
+ 
+})
+
 module.exports = router;
