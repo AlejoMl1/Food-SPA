@@ -1,7 +1,10 @@
-require('dotenv').config();
-const BASE_URL = process.env.REACT_APP_API;
+import dotenv from 'dotenv';
+dotenv.config();
+// const BASE_URL = process.env.REACT_APP_API;
+const BASE_URL = 'https://food-spa-production.up.railway.app' 
 
-console.log('BASE_URL', BASE_URL);
+
+console.log('BASE_URL=', BASE_URL);
 export const URL_GET_ALL_RECIPES = `${BASE_URL}/recipes`;
 export const URL_GET_RECIPES_HOME = `${BASE_URL}/`;
 export const URL_GET_TYPES = `${BASE_URL}/types`;
