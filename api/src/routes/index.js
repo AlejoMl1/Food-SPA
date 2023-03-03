@@ -3,7 +3,6 @@ const recipes = require('./recipes.js');
 const recipe = require('./recipe.js');
 const types = require('./types.js');
 const filterOrder = require('./filterOrder.js');
-const upload = require('./upload.js');
 const axios = require('axios');
 const {Recipe,Diet} = require('../db')
 require('dotenv').config();
@@ -16,15 +15,15 @@ const {
     API_KEY2
   } = process.env;
 
-//test
+
 router.use('/recipes', recipes);
 router.use('/types', types);
 router.use('/recipe', recipe);
 router.use('/filter', filterOrder);
-router.use('/upload', upload);
+
 
 const getDbInfo = async()=>{
-    return await Reciwepe.findAll(
+    return await Recipe.findAll(
         {
         include:{
             model : Diet,
