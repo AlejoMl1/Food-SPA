@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap');
+
+@media only screen and (max-width: 768px){
+    .container_landing {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        align-content:center ;
+        font-size: 25vw;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        /* background-image: url('https://images.unsplash.com/photo-1547516508-4c1f9c7c4ec3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80'); */
+        /* background-image: url('https://giphy.com/embed/Buva2aomcuXBAD07PC" width="270" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/kitchen-chopped-kinrose-Buva2aomcuXBAD07PC'); */
+        background-image: url('https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80');
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin: 0;
+    }
+    
+    .landing_h1 {
+        
+        font-family: 'Dancing Script', cursive;
+        font-weight: 700;
+        /* font-size: 15rem; */
+        justify-content: center;
+        text-align: center;
+    
+    }
+    
+    .landing_h2 {
+       
+        font-family: 'Dancing Script', cursive;
+        font-weight: 400;
+        /* font-size: 6rem; */
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .landing_button {
+      
+        font-family: 'Dancing Script', cursive;
+        font-weight: 100;
+        /* font-size: 4rem; */
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .myButton {
+        box-shadow: 2px 2px 11px 0px #276873;
+        background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+        background-color: #599bb3;
+        border-radius: 18px;
+        border: 1px solid #29668f;
+        display: inline-block;
+        cursor: pointer;
+        color: #ffffff;
+        font-family: Arial;
+        /* font-size: 17px; */
+        padding: 9px 28px;
+        text-decoration: none;
+        text-shadow: 0px 1px 0px #3d768a;
+    }
+    
+    .myButton:hover {
+        background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+        background-color: #408c99;
+    }
+    
+    .myButton:active {
+        position: relative;
+        top: 1px;
+    }
+    
+}
+
+@media only screen and (min-width: 768px){
+    .container_landing {
+        display: grid;
+        grid-template-columns: 1fr 1fr 2fr;
+        grid-template-rows: repeat(8, 1fr);
+        font-size: 7rem;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        /* background-image: url('https://images.unsplash.com/photo-1547516508-4c1f9c7c4ec3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80'); */
+        /* background-image: url('https://giphy.com/embed/Buva2aomcuXBAD07PC" width="270" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/kitchen-chopped-kinrose-Buva2aomcuXBAD07PC'); */
+        background-image: url('https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80');
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin: 0;
+    
+    
+    }
+    
+    .landing_h1 {
+        grid-column: 3/4;
+        grid-row: 4/5;
+        display: flex;
+        font-family: 'Dancing Script', cursive;
+        font-weight: 700;
+        font-size: 15rem;
+        justify-content: center;
+        text-align: center;
+    
+    }
+    
+    .landing_h2 {
+        grid-column: 3/4;
+        grid-row: 5/6;
+        display: flex;
+        font-family: 'Dancing Script', cursive;
+        font-weight: 400;
+        font-size: 6rem;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .landing_button {
+        grid-column: 3/4;
+        grid-row: 6/7;
+        display: flex;
+        font-family: 'Dancing Script', cursive;
+        font-weight: 100;
+        font-size: 4rem;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .myButton {
+        box-shadow: 2px 2px 11px 0px #276873;
+        background: linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
+        background-color: #599bb3;
+        border-radius: 18px;
+        border: 1px solid #29668f;
+        display: inline-block;
+        cursor: pointer;
+        color: #ffffff;
+        font-family: Arial;
+        font-size: 17px;
+        padding: 9px 28px;
+        text-decoration: none;
+        text-shadow: 0px 1px 0px #3d768a;
+    }
+    
+    .myButton:hover {
+        background: linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+        background-color: #408c99;
+    }
+    
+    .myButton:active {
+        position: relative;
+        top: 1px;
+    }
+    
+    
+}

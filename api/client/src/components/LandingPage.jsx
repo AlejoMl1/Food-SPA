@@ -9,7 +9,6 @@ export default function LandingPage() {
 
     //constant to dispatch the actions
     const dispatch = useDispatch()
-    
     useEffect(() => {
         dispatch(loadDataToDb())
     }, [])
