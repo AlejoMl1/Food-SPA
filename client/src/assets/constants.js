@@ -1,9 +1,5 @@
-// const BASE_URL = "https://lets-cook-spa.herokuapp.com";
-
-
-import dotenv from 'dotenv';
-dotenv.config();
-const BASE_URL = process.env.REACT_APP_API || 'http://localhost:3001' ;
+require('dotenv').config();
+const BASE_URL = process.env.REACT_APP_API;
 
 console.log('BASE_URL', BASE_URL);
 export const URL_GET_ALL_RECIPES = `${BASE_URL}/recipes`;
