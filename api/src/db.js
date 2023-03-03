@@ -4,10 +4,10 @@ const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const {
-  DB_USER, DB_PASSWORD, DB_HOST,DEVELOPMENT
+  DB_USER, DB_PASSWORD, DB_HOST,DEVELOPMENT,DB_NAME,DB_PORT
 } = process.env;
 
-const DATABASE_URL = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/food`;
+const DATABASE_URL = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`;
 // console.log(DATABASE_URL);
 
 if (DEVELOPMENT) {
