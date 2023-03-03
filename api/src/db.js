@@ -3,12 +3,11 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-// const {
-//   DB_USER, DB_PASSWORD, DB_HOST,
-// } = process.env;
+const {
+  DB_USER, DB_PASSWORD, DB_HOST,DEVELOPMENT
+} = process.env;
 
-const {DATABASE_URL,DEVELOPMENT} = process.env ;
-// DATABASE_URL = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/food`;
+const DATABASE_URL = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/food`;
 // console.log(DATABASE_URL);
 
 if (DEVELOPMENT) {
