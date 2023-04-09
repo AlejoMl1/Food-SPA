@@ -3,6 +3,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
+require('dotenv').config();
 //*Esto es para el deployment en heroku 
 const {CORS_URL} = process.env;
 console.log('cors url ',CORS_URL);
